@@ -1,15 +1,7 @@
 import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import { StartScreen } from './screens/StartScreen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-const HomeScreen = () => {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-    </View>
-  );
-};
 
 const Stack = createNativeStackNavigator();
 
@@ -17,7 +9,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Start" component={StartScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
