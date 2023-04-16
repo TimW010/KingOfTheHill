@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { Platform } from 'react-native';
-import MapView, { Circle } from 'react-native-maps';
+import { Platform, StyleSheet, Text, View } from 'react-native';
+import MapView, { Callout, Circle } from 'react-native-maps';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Screen } from '../Screen';
 import * as Device from 'expo-device';
@@ -162,7 +162,6 @@ export const GameScreen = () => {
     }
   };
 
-
   return (
     <Screen>
       {playerLocation && geofenceArea && (
@@ -186,8 +185,29 @@ export const GameScreen = () => {
             fillColor="rgba(255, 0, 0, 0.5)"
             strokeColor="rgba(255, 0, 0, 0.2)"
           />
+          <Callout style={{left: 10, top: 5}}>
+            <View style={styles.container}>
+              <Text style={{fontSize: 24, fontWeight:'bold', color: "rgba(255, 0, 0, 0.5)"}}>Captures: {playerScore}</Text>
+            </View>
+          </Callout>
         </MapView>
       )}
     </Screen>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    padding: 5,
+    borderRadius: 10,
+  },
+  text: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'black',
+  },
+});
