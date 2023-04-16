@@ -1,6 +1,7 @@
-import * as React from 'react';
+import React from "react";
 import { NavigationContainer } from '@react-navigation/native';
 import { StartScreen } from './components/screens/StartScreen';
+import { GameScreen } from './components/screens/GameScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StatusBar } from 'expo-status-bar';
 
@@ -13,7 +14,7 @@ const App = () => {
     <NavigationContainer>
       <Tab.Navigator>
         <Tab.Screen name="Home" component={StartScreen}/>
-        <Tab.Screen name="Map" component={StartScreen}/>
+        <Tab.Screen name="Game" component={GameScreen}/>
       </Tab.Navigator>
     </NavigationContainer>
     </>
