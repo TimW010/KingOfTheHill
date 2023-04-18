@@ -8,6 +8,7 @@ import * as Notifications from 'expo-notifications';
 import * as Location from "expo-location";
 import { generateRandomGeofencingArea } from '../Utils';
 import { checkGeofencingArea } from '../Utils';
+import { updatePlayer } from '../FirebaseUtils';
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -75,7 +76,7 @@ export const GameScreen = () => {
   const responseListener = useRef();
   
   //variables for game logic
-  const [player, setPlayer] = useState("Player 1");
+  const [player, setPlayer] = useState("");
   const [playerScore, setPlayerScore] = useState(0);
 
   const [playerLocation, setPlayerLocation] = useState(null);
@@ -145,8 +146,8 @@ export const GameScreen = () => {
       const gameState = { player, playerScore, geofenceArea };
       await AsyncStorage.setItem("gameState", JSON.stringify(gameState));
     };
-
     saveState();
+    updatePlayer({name: player, score: playerScore});
   }, [player, playerScore, geofenceArea]);
 
   const handleRegionChange = async (latitude, longitude) => {
@@ -187,7 +188,7 @@ export const GameScreen = () => {
           />
           <Callout style={{left: 10, top: 5}}>
             <View style={styles.container}>
-              <Text style={{fontSize: 24, fontWeight:'bold', color: "rgba(255, 0, 0, 0.5)"}}>Captures: {playerScore}</Text>
+              <Text style={{fontSize: 24, fontWeight:'bold', color: "rgba(255, 0, 0, 0.5)"}}>Score: {playerScore}</Text>
             </View>
           </Callout>
         </MapView>

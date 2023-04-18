@@ -39,6 +39,9 @@ export const generateRandomGeofencingArea = (latitude, longitude) => {
       Math.random() * 0.01 + latitude - Math.random() * 0.005;
     const randomLongitude =
       Math.random() * 0.01 + longitude - Math.random() * 0.005;
+    // const randomRadius = 50;
+    // const randomLatitude = Math.random() * 0.0009 + latitude;
+    // const randomLongitude = Math.random() * 0.0009 + longitude;
     return {
       latitude: randomLatitude,
       longitude: randomLongitude,
